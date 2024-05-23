@@ -25,6 +25,7 @@ func main() {
 func inputProduk(T *tabProduk, n *int) {
 	clear_screen()
 	fmt.Print("masukkan banyak produk yang di input (1-20): ")
+	// validasi banyaknya produk yang akan di-input
 	for {
 		fmt.Scan(n)
 		if !(1 <= *n && *n <= NMAX) {
@@ -36,6 +37,7 @@ func inputProduk(T *tabProduk, n *int) {
 			break
 		}
 	}
+	// proses input data
 	for i := 0; i < *n; i++ {
 		fmt.Print("Data ke-", i + 1, "\n")
 		fmt.Print("masukkan nama: ")
