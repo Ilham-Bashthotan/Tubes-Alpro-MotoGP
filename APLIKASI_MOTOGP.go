@@ -268,19 +268,6 @@ func hitungTotalPoin(S rider) int {
 }
 
 
-// ekspan ke bawah 
-func inputData(T *tabRider, n *int) {
-/*I.S. terdefinisi array T sebanyak n
- F.S. T berisi nilai. Banyak elemen (n) berisi nilai NMAX, jika n > NMAX*/
-	var i int
-    if *n > NMAX {
-		*n = NMAX
-	}
-
-    for i = 0; i < *n; i++ {
-		fmt.Scan(&T[i].name, &T[i].no, &T[i].nat, &T[i].team, &T[i].timeFP1, &T[i].timePR, &T[i].timeFP2, &T[i].timeQ1, &T[i].timeQ2, &T[i].timeSPR, &T[i].timeWUP, &T[i].timeRAC )
-    }
-}
 
 func inputRider(T *tabRider, n int) {
 /*I.S. terdefinisi array T sebanyak n
@@ -348,7 +335,7 @@ F.S. T berisi nilai terurut berdasarkan waktu*/
 
 func inputFrasa(str *string) {
 /*I.S str 
-F.S tercetak tabel dari field : name, no, nat, team, totalPoin*/
+F.S tercetak tabel dari field : name*/
 	var ch, i byte
 
 	*str = ""
