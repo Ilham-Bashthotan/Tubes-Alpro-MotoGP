@@ -11,7 +11,7 @@ type tabWaktu [NMAX]waktu
 type rider struct {
 	no [NMAX]int
 	nama, nat [NMAX]string
-	FP1, PR, FP2 tabWaktu
+	FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC tabWaktu
 }
 
 const NMAX int = 24
@@ -31,6 +31,11 @@ func main() {
 		dataRider.FP1[i].no = dataRider.no[i]
 		dataRider.PR[i].no = dataRider.no[i]
 		dataRider.FP2[i].no = dataRider.no[i]
+		dataRider.Q1[i].no = dataRider.no[i]
+		dataRider.Q2[i].no = dataRider.no[i]
+		dataRider.SPR[i].no = dataRider.no[i]
+		dataRider.WUP[i].no = dataRider.no[i]
+		dataRider.RAC[i].no = dataRider.no[i]
 	}
 
 	// input waktu FP1
