@@ -128,7 +128,7 @@ func inputFrasa(str *string) {
     *str = ""
     for i = 1; i <= 2; i++ {
         fmt.Scanf("%c", &ch)
-        if ch != '\r'&& ch != '\n' {
+        if ch != '\r' && ch != '\n' {
             *str += string(ch)
         }
     }
