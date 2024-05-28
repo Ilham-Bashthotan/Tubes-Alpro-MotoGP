@@ -8,13 +8,13 @@ type time struct {
 	no, time int
 }
 
-type tabTime [NMAX]time
-
-type riders struct {
-	no                                  [NMAX]int
-	name, nat, team                     [NMAX]string
-    FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC tabTime
+type rider struct {
+	no                                  int
+	name, nat, team                     string
+    FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC int
 }
+
+type tabRider [NMAX]rider
 
 func main() {
 	var dataRider riders
@@ -24,7 +24,7 @@ func main() {
 	cetakDataRider(dataRider, nRider)
 }
 
-func inputDataRider(T *riders, n *int) {
+func inputDataRider(T *riders, n *int, p string) {
 	var i int
 
 	fmt.Scan(n)
