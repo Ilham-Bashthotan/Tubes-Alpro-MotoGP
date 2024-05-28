@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"os/exec"
+)
 
 const NMAX int = 24
 
@@ -13,23 +17,28 @@ type rider struct {
 type tabRider [NMAX]rider
 
 func main() {
-	var dataRider riders
+	var dataRider tabRider
 	var nRider int
 	var pilih string
 
 	for {
-		fmt.Scan(&pilih)
+		menuInputDataRider(&pilih)
 		switch pilih {
-			case "1": inputRider(&dataRider, &nRider, "rider")
+			case "1": inputRider(&dataRider, &nRider, "Rider")
 			case "2": inputRider(&dataRider, &nRider, "FP1")
 			case "3": inputRider(&dataRider, &nRider, "PR")
 			case "4": inputRider(&dataRider, &nRider, "FP2")
 			case "5": inputRider(&dataRider, &nRider, "Q1")
-			case "6": inputRider(&dataRider, *nRider, "Q2")
-			case "7": inputRider(&dataRider, *nRider, "SPR")
-			case "8": inputRider(&dataRider, *nRider, "WUP")
-			case "9": inputRider(&dataRider, *nRider, "RAC")
+			case "6": inputRider(&dataRider, &nRider, "Q2")
+			case "7": inputRider(&dataRider, &nRider, "SPR")
+			case "8": inputRider(&dataRider, &nRider, "WUP")
+			case "9": inputRider(&dataRider, &nRider, "RAC")
+		    default: clear_screen()
  		}
+		if pilih == "10" {
+			clear_screen()
+			break
+		}
 	}
 	cetakDataRider(dataRider, nRider)
 }
@@ -37,43 +46,71 @@ func main() {
 func inputRider(T *tabRider, n *int, p string) {
 	var i int
 
-	fmt.Scan(n)
-	if *n > NMAX {
-		*n = NMAX
+	if p == "Rider"{
+		fmt.Println("Masukkan jumlah rider")
+		fmt.Scan(&n)
+		if *n > NMAX {
+			*n = NMAX
+		}
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nama rider ke", i+1, ":")
+			inputFrasa(&T[i].name)
+			fmt.Println("Input nomor rider ke", i+1, ":")
+			fmt.Scan(&T[i].no)
+			fmt.Println("Input asal negara rider ke", i+1, ":")
+			fmt.Scan(&T[i].nat)
+			fmt.Println("Input tim rider ke", i+1, ":")
+			fmt.Scan(&T[i].team)
+		}
+	} else if p == "FP1" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu FP1 rider ke", i+1, ":")
+			fmt.Scan(&T[i].FP1, &T[i].FP1)
+		}
+	} else if p == "PR" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu PR rider ke", i+1, ":")
+			fmt.Scan(&T[i].PR,&T[i].PR)
+		}
+	} else if p == "FP2" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu FP2 rider ke", i+1, ":")
+			fmt.Scan(&T[i].FP2, &T[i].FP2)
+		}
+	} else if p == "Q1" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu Q1 rider ke", i+1, ":")
+			fmt.Scan(&T[i].Q1, &T[i].Q1)
+		}
+	} else if p == "Q2" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu Q2 rider ke", i+1, ":")
+			fmt.Scan(&T[i].Q2, &T[i].Q2)
+		}
+	} else if p == "SPR" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu SPR rider ke", i+1, ":")
+			fmt.Scan(&T[i].SPR, &T[i].SPR)
+		}
+	} else if p == "WUP" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu WUP rider ke", i+1, ":")
+			fmt.Scan( &T[i].WUP, &T[i].WUP)
+		}
+	} else if p == "RAC" && *n != 0 {
+		for i = 0; i < *n; i++ {
+			fmt.Println("Input nomor & waktu RAC rider ke", i+1, ":")
+			fmt.Scan( &T[i].RAC, &T[i].RAC)
+		}
+	}	
 	}
-	for i = 0; i < *n; i++ {
-		fmt.Println("Input nama rider:")
-		inputFrasa(&T.name[i])
-		fmt.Println("Input nomor rider:")
-		fmt.Scan(&T.no[i])
-		fmt.Println("Input asal negara rider:")
-		fmt.Scan(&T.nat[i])
-		fmt.Println("Input tim rider:")
-		fmt.Scan(&T.team[i])
-		fmt.Println("Input nomor & waktu FP1:")
-		fmt.Scan(&T.FP1[i].no, &T.FP1[i].time)
-		fmt.Println("Input nomor & waktu PR:")
-		fmt.Scan(&T.PR[i].no,&T.PR[i].time)
-		fmt.Println("Input nomor & waktu FP2:")
-		fmt.Scan(&T.FP2[i].no, &T.FP2[i].time)
-		fmt.Println("Input nomor & waktu Q1:")
-		fmt.Scan(&T.Q1[i].no, &T.Q1[i].time)
-		fmt.Println("Input nomor & waktu Q2:")
-		fmt.Scan(&T.Q2[i].no, &T.Q2[i].time)
-		fmt.Println("Input nomor & waktu SPR:")
-		fmt.Scan(&T.SPR[i].no, &T.SPR[i].time)
-		fmt.Println("Input nomor & waktu WUP:")
-		fmt.Scan( &T.WUP[i].no, &T.WUP[i].time)
-		fmt.Println("Input nomor & waktu RAC:")
-		fmt.Scan( &T.RAC[i].no, &T.RAC[i].time)
-	}
-}
+
 
 func cetakDataRider(T tabRider, n int) {
 	var i int
 
 	for i = 0; i < n; i++ {
-		fmt.Println(T.name[i], T.no[i], T.nat[i], T.team[i], T.FP1[i].no, T.FP1[i].time, T.PR[i].no,T.PR[i].time, T.FP2[i].no, T.FP2[i].time, T.Q1[i].no, T.Q1[i].time, T.Q2[i].no, T.Q2[i].time, T.SPR[i].no, T.SPR[i].time, T.WUP[i].no, T.WUP[i].time, T.RAC[i].no, T.RAC[i].time)
+		fmt.Println(T[i].name, T[i].no, T[i].nat, T[i].team, T[i].FP1, T[i].PR, T[i].PR, T[i].FP2, T[i].Q1, T[i].Q2, T[i].SPR, T[i].WUP, T[i].RAC)
 	}
 }
 
@@ -100,7 +137,7 @@ func inputFrasa(str *string) {
 		}
 	}
 
-	func menuInputDataRider() {
+	func menuInputDataRider(p *string) {
 		fmt.Println("--------------------------")
 		fmt.Println("     Input Data Rider     ")
 		fmt.Println("--------------------------")
@@ -116,5 +153,11 @@ func inputFrasa(str *string) {
 		fmt.Println("10. Kembali")
 		fmt.Println("--------------------------")
 		fmt.Print("Pilih (1-10): ")
+		inputFrasa(p)
 	}
 
+	func clear_screen() {
+		c := exec.Command("cmd", "/c", "cls")
+		c.Stdout = os.Stdout
+		c.Run()
+	}
