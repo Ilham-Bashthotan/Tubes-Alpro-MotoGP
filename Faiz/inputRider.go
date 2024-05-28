@@ -15,12 +15,26 @@ type tabRider [NMAX]rider
 func main() {
 	var dataRider riders
 	var nRider int
+	var pilih string
 
-	inputDataRider(&dataRider, &nRider)
+	for {
+		fmt.Scan(&pilih)
+		switch pilih {
+			case "1": inputRider(&dataRider, &nRider, "rider")
+			case "2": inputRider(&dataRider, &nRider, "FP1")
+			case "3": inputRider(&dataRider, &nRider, "PR")
+			case "4": inputRider(&dataRider, &nRider, "FP2")
+			case "5": inputRider(&dataRider, &nRider, "Q1")
+			case "6": inputRider(&dataRider, *nRider, "Q2")
+			case "7": inputRider(&dataRider, *nRider, "SPR")
+			case "8": inputRider(&dataRider, *nRider, "WUP")
+			case "9": inputRider(&dataRider, *nRider, "RAC")
+ 		}
+	}
 	cetakDataRider(dataRider, nRider)
 }
 
-func inputDataRider(T *riders, n *int, p string) {
+func inputRider(T *tabRider, n *int, p string) {
 	var i int
 
 	fmt.Scan(n)
@@ -55,7 +69,7 @@ func inputDataRider(T *riders, n *int, p string) {
 	}
 }
 
-func cetakDataRider(T riders, n int) {
+func cetakDataRider(T tabRider, n int) {
 	var i int
 
 	for i = 0; i < n; i++ {
@@ -84,5 +98,23 @@ func inputFrasa(str *string) {
 				break
 			}
 		}
+	}
+
+	func menuInputDataRider() {
+		fmt.Println("--------------------------")
+		fmt.Println("     Input Data Rider     ")
+		fmt.Println("--------------------------")
+		fmt.Println("1.  Rider")
+		fmt.Println("2.  Waktu Free Practice 1")
+		fmt.Println("3.  Waktu Practice")
+		fmt.Println("4.  Waktu Free Practice 2")
+		fmt.Println("5.  Waktu Qualification 1")
+		fmt.Println("6.  Waktu Qualification 2")
+		fmt.Println("7.  Waktu Sprint Race")
+		fmt.Println("8.  Waktu Warming Up")
+		fmt.Println("9.  Waktu Main Race")
+		fmt.Println("10. Kembali")
+		fmt.Println("--------------------------")
+		fmt.Print("Pilih (1-10): ")
 	}
 
