@@ -53,22 +53,19 @@ func inputData(T *tabPemain) {
 }
 
 func urut(T *tabSubPemain) {
-    var i, minPos, pass int
+    var i, pass int
     var temp subPemain
     
     for pass = 1; pass < 6; pass++ {
-        minPos = pass - 1
-        for i = pass; i < 6; i++ {
-            if T[i].waktu < T[minPos].waktu {
-                minPos = i
-            }
+        i = pass
+        temp = T[pass]
+        for i > 0 && temp.waktu < T[i - 1].waktu {
+            T[i] = T[i - 1]
+            i--
         }
-        temp = T[minPos]
-        T[minPos] = T[pass - 1]
-        T[pass - 1] = temp
+        T[i] = temp
     }
 }
-
 
 func cetak(T tabSubPemain) {
     fmt.Println("\nData adalah:")
