@@ -4,14 +4,10 @@ import "fmt"
 
 const NMAX int = 24
 
-type time struct {
-	no, time int
-}
-
 type rider struct {
 	no                                  int
 	name, nat, team                     string
-    FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC int
+    FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC int //milidetik
 }
 
 type tabRider [NMAX]rider
@@ -89,3 +85,4 @@ func inputFrasa(str *string) {
 			}
 		}
 	}
+
