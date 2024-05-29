@@ -20,6 +20,7 @@ func main() {
     var data tabPemain
     var data1, data2, data3 tabSubPemain
 
+    fmt.Println(data)
     inputData(&data)
     // memindahkan data
     for i := 0; i < 6; i++ {
@@ -43,8 +44,7 @@ func main() {
 
     cetak(data1)
     cetak(data2)
-    cetak(data3)
-    
+    cetak(data3)    
 }
 func inputData(T *tabPemain) {
     for i := 0; i < 6; i++ {
@@ -70,14 +70,15 @@ func urut(T *tabSubPemain) {
 func cetak(T tabSubPemain) {
     fmt.Println("\nData adalah:")
     for i := 0; i < 6; i++ {
-        fmt.Println(T[i].nama, T[i].waktu)
+        fmt.Printf("%-010v %-010v\n", T[i].nama, T[i].waktu)
     }
 }
 /*
-a 123 1212 432
-b 213 2144 4
-c 34 414 41
-d 4141 42 3
-e 428 272 26
-f 26 67 93
+6
+afwefw 123 1212 432
+bfwef 213 2144 4
+c32r 34 414 41
+dser 4141 42 3
+ec43f 428 272 26
+fh45h4 26 67 93
 */
