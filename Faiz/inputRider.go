@@ -49,11 +49,11 @@ func main() {
 
 func inputRider(T *tabRider, n *int, p string) {
 	var i int
-	var bin string
+	// var bin string
 
 	if p == "Rider"{
 		fmt.Println("Masukkan jumlah rider")
-		fmt.Scan(&n)
+		fmt.Scan(n)
 		if *n > NMAX {
 			*n = NMAX
 		}
@@ -125,9 +125,7 @@ func inputRider(T *tabRider, n *int, p string) {
 			}
 		}
 	}
-	fmt.Scan(&bin)
 }
-
 
 func cetakDataRider(T tabRider, n int) {
 	var i int
