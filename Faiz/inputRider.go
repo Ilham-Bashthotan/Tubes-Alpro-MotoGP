@@ -49,6 +49,7 @@ func main() {
 
 func inputRider(T *tabRider, n *int, p string) {
 	var i int
+	var bin string
 
 	if p == "Rider"{
 		fmt.Println("Masukkan jumlah rider")
@@ -69,62 +70,63 @@ func inputRider(T *tabRider, n *int, p string) {
 	} else if p == "FP1" {
 		if cekKelengkapanRider(*T, *n){
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input waktu FP1 rider ke", i+1, ":")
-			fmt.Scan(&T[i].FP1.min, &T[i].FP1.sec, &T[i].FP1.milisec)
-		}
+				fmt.Println("Input waktu FP1 rider ke", i+1, ":")
+				fmt.Scan(&T[i].FP1.min, &T[i].FP1.sec, &T[i].FP1.milisec)
+			}
 		}
 	} else if p == "PR" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input waktu PR rider ke", i+1, ":")
-			fmt.Scan(&T[i].PR .min,&T[i].PR.sec, &T[i].PR.milisec)
-		}
+				fmt.Println("Input waktu PR rider ke", i+1, ":")
+				fmt.Scan(&T[i].PR .min,&T[i].PR.sec, &T[i].PR.milisec)
+			}
 		}
 	} else if p == "FP2" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input waktu FP2 rider ke", i+1, ":")
-			fmt.Scan(&T[i].FP2.min, &T[i].FP2.sec, &T[i].FP2.milisec)
-		}
+				fmt.Println("Input waktu FP2 rider ke", i+1, ":")
+				fmt.Scan(&T[i].FP2.min, &T[i].FP2.sec, &T[i].FP2.milisec)
+			}
 		}
 	} else if p == "Q1" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input nomor & waktu Q1 rider ke", i+1, ":")
-			fmt.Scan(&T[i].Q1.min, &T[i].Q1.sec, &T[i].Q1.milisec)
-		}
+				fmt.Println("Input nomor & waktu Q1 rider ke", i+1, ":")
+				fmt.Scan(&T[i].Q1.min, &T[i].Q1.sec, &T[i].Q1.milisec)
+			}
 		}	
 	} else if p == "Q2" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input nomor & waktu Q2 rider ke", i+1, ":")
-			fmt.Scan(&T[i].Q2.min, &T[i].Q2.sec, &T[i].Q2.milisec)
-		}
+				fmt.Println("Input nomor & waktu Q2 rider ke", i+1, ":")
+				fmt.Scan(&T[i].Q2.min, &T[i].Q2.sec, &T[i].Q2.milisec)
+			}
 		}
 	} else if p == "SPR" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input nomor & waktu SPR rider ke", i+1, ":")
-			fmt.Scan(&T[i].SPR.min, &T[i].SPR.sec, &T[i].SPR.milisec)
-		}
+				fmt.Println("Input nomor & waktu SPR rider ke", i+1, ":")
+				fmt.Scan(&T[i].SPR.min, &T[i].SPR.sec, &T[i].SPR.milisec)
+			}
 		}
 	} else if p == "WUP" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input nomor & waktu WUP rider ke", i+1, ":")
-			fmt.Scan( &T[i].WUP.min, &T[i].WUP.sec, &T[i].WUP.milisec)
-		}
+				fmt.Println("Input nomor & waktu WUP rider ke", i+1, ":")
+				fmt.Scan( &T[i].WUP.min, &T[i].WUP.sec, &T[i].WUP.milisec)
+			}
 		}
 		
 	} else if p == "RAC" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-			fmt.Println("Input nomor & waktu RAC rider ke", i+1, ":")
-			fmt.Scan( &T[i].RAC.min, &T[i].RAC.sec, &T[i].RAC.milisec)
+				fmt.Println("Input nomor & waktu RAC rider ke", i+1, ":")
+				fmt.Scan( &T[i].RAC.min, &T[i].RAC.sec, &T[i].RAC.milisec)
+			}
 		}
-		}
-	}	
 	}
+	fmt.Scan(&bin)
+}
 
 
 func cetakDataRider(T tabRider, n int) {
