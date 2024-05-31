@@ -8,14 +8,9 @@ import (
 
 const NMAX int = 24
 
-type time struct {
-	min, sec, milisec int
-}
-
 type rider struct {
-	no                                  int
-	name, nat, team                     string
-    FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC time
+	no, FP1, PR, FP2, Q1, Q2, SPR, WUP, RAC   int
+	name, nat, team                           string
 }
 
 type tabRider [NMAX]rider
@@ -48,7 +43,7 @@ func main() {
 }
 
 func inputRider(T *tabRider, n *int, p string) {
-	var i int
+	var i, min, sec, milsec int
 	// var bin string
 
 	if p == "Rider"{
@@ -63,65 +58,73 @@ func inputRider(T *tabRider, n *int, p string) {
 			fmt.Println("Input nomor rider ke", i+1, ":")
 			fmt.Scan(&T[i].no)
 			fmt.Println("Input asal negara rider ke", i+1, ":")
-			fmt.Scan(&T[i].nat)
+			inputFrasa(&T[i].nat)
 			fmt.Println("Input tim rider ke", i+1, ":")
-			fmt.Scan(&T[i].team)
+			inputFrasa(&T[i].team)
 		}
 	} else if p == "FP1" {
 		if cekKelengkapanRider(*T, *n){
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input waktu FP1 rider ke", i+1, ":")
-				fmt.Scan(&T[i].FP1.min, &T[i].FP1.sec, &T[i].FP1.milisec)
+				fmt.Println("Input waktu FP1 rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].FP1 = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 	} else if p == "PR" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input waktu PR rider ke", i+1, ":")
-				fmt.Scan(&T[i].PR .min,&T[i].PR.sec, &T[i].PR.milisec)
+				fmt.Println("Input waktu PR rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].PR = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 	} else if p == "FP2" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input waktu FP2 rider ke", i+1, ":")
-				fmt.Scan(&T[i].FP2.min, &T[i].FP2.sec, &T[i].FP2.milisec)
+				fmt.Println("Input waktu FP2 rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].FP2 = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 	} else if p == "Q1" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input nomor & waktu Q1 rider ke", i+1, ":")
-				fmt.Scan(&T[i].Q1.min, &T[i].Q1.sec, &T[i].Q1.milisec)
+				fmt.Println("Input waktu Q1 rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].Q1 = (60000 * min) + (1000 * sec) + milsec
 			}
 		}	
 	} else if p == "Q2" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input nomor & waktu Q2 rider ke", i+1, ":")
-				fmt.Scan(&T[i].Q2.min, &T[i].Q2.sec, &T[i].Q2.milisec)
+				fmt.Println("Input waktu Q2 rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].Q2 = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 	} else if p == "SPR" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input nomor & waktu SPR rider ke", i+1, ":")
-				fmt.Scan(&T[i].SPR.min, &T[i].SPR.sec, &T[i].SPR.milisec)
+				fmt.Println("Input waktu SPR rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].SPR = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 	} else if p == "WUP" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input nomor & waktu WUP rider ke", i+1, ":")
-				fmt.Scan( &T[i].WUP.min, &T[i].WUP.sec, &T[i].WUP.milisec)
+				fmt.Println("Input waktu WUP rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].WUP = (60000 * min) + (1000 * sec) + milsec
 			}
 		}
 		
 	} else if p == "RAC" {
 		if cekKelengkapanRider(*T , *n) {
 			for i = 0; i < *n; i++ {
-				fmt.Println("Input nomor & waktu RAC rider ke", i+1, ":")
-				fmt.Scan( &T[i].RAC.min, &T[i].RAC.sec, &T[i].RAC.milisec)
+				fmt.Println("Input waktu RAC rider ke", i+1, "dalam format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].RAC = (60000 * min) + (1000 * sec) + milsec 
 			}
 		}
 	}
