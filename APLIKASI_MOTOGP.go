@@ -25,8 +25,8 @@ var dataRider tabRider
 /////////////////////////// Main Menu ///////////////////////////
 func main() {
 	var pilih string
-	test(&dataRider, &nDataRider)
-	hitungTotalPoin(&dataRider, nDataRider)
+	// test(&dataRider, &nDataRider)
+	// hitungTotalPoin(&dataRider, nDataRider)
 	for {
 		clear_screen()
 		intro()
@@ -45,7 +45,7 @@ func main() {
 	bye()
 }
 
-/////////////////////////// Menu Cekat Tampilan ///////////////////////////
+/////////////////////////// Cekat Main Menu ///////////////////////////
 func intro() {
     clear_screen()
     fmt.Println("Selamat datang di aplikasi")
@@ -157,15 +157,15 @@ func inputDataRider() {
 		clear_screen()
 		menuInputDataRider(&pilih)
 		switch pilih {
-			// case "1":	inputRider(&dataRider, nDataRider)
-			// case "2":	inputFP1(&dataRider, nDataRider)
-			// case "3":	inputPR(&dataRider, nDataRider)
-			// case "4":	inputFP2(&dataRider, nDataRider)
-			// case "5":	inputQ1(&dataRider, nDataRider)
-			// case "6":	inputQ2(&dataRider, nDataRider)
-			// case "7":	inputSPR(&dataRider, nDataRider)
-			// case "8":	inputWUP(&dataRider, nDataRider)
-			// case "9":	inputRAC(&dataRider, nDataRider)
+			case "1": inputRider(&dataRider, &nDataRider, pilih)
+			case "2": inputRider(&dataRider, &nDataRider, pilih)
+			case "3": inputRider(&dataRider, &nDataRider, pilih)
+			case "4": inputRider(&dataRider, &nDataRider, pilih)
+			case "5": inputRider(&dataRider, &nDataRider, pilih)
+			case "6": inputRider(&dataRider, &nDataRider, pilih)
+			case "7": inputRider(&dataRider, &nDataRider, pilih)
+			case "8": inputRider(&dataRider, &nDataRider, pilih)
+			case "9": inputRider(&dataRider, &nDataRider, pilih)
 			default: clear_screen()
 		}
 		if pilih == "10" {
@@ -256,7 +256,7 @@ func subMenuCetakRider() {
 		cetakRider(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakRaceGrid() {
@@ -276,7 +276,7 @@ func subMenuCetakRaceGrid() {
 		cetakRider(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakPoin() {
@@ -296,7 +296,7 @@ func subMenuCetakPoin() {
 		cetakPoin(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakFP1() {
@@ -316,7 +316,7 @@ func subMenuCetakFP1() {
 		cetakWaktuFP1(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 	fmt.Print("Tekan enter sekali lagi. ")
 }
 
@@ -337,7 +337,7 @@ func subMenuCetakPR() {
 		cetakWaktuPR(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakFP2() {
@@ -357,7 +357,7 @@ func subMenuCetakFP2() {
 		cetakWaktuFP2(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakQ1() {
@@ -377,7 +377,7 @@ func subMenuCetakQ1() {
 		cetakWaktuQ1(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakQ2() {
@@ -397,7 +397,7 @@ func subMenuCetakQ2() {
 		cetakWaktuQ2(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakSPR() {
@@ -417,7 +417,7 @@ func subMenuCetakSPR() {
 		cetakWaktuSPR(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakWUP() {
@@ -437,7 +437,7 @@ func subMenuCetakWUP() {
 		cetakWaktuWUP(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuCetakRAC() {
@@ -457,7 +457,7 @@ func subMenuCetakRAC() {
 		cetakWaktuRAC(dataRider, nDataRider)
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
 func subMenuHapusRider() {
@@ -476,6 +476,7 @@ func subMenuHapusRider() {
 				fmt.Scan(&x)
 				idx = cariNoIdx(dataRider, nDataRider, x)
 				if idx == -1 {
+					clear_screen()
 					fmt.Println("Data tidak ditemukan")
 				} else {
 					fmt.Print("Anda yakin ingin hapus data tersebut (y/n)? ")
@@ -527,10 +528,182 @@ func subMenuHapusSemuaRider() {
 		}
 	}
 	fmt.Print("Tekan enter untuk keluar. ")
-	inputFrasa(&bin)
+	fmt.Scanln(&bin)
 }
 
-///////////////////////////  ///////////////////////////
+/////////////////////////// Sub Menu Tampilan Edit  ///////////////////////////
+func subMenuEditRider() {
+	var pilih string
+	var x, idx int
+
+	for {
+		clear_screen()
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else {
+			for {
+				cetakRider(dataRider, nDataRider)
+				fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+				fmt.Scan(&x)
+				idx = cariNoIdx(dataRider, nDataRider, x)
+				if idx == -1 {
+					clear_screen()
+					fmt.Println("Data tidak ditemukan")
+				} else {
+					fmt.Print("Anda yakin ingin hapus data tersebut (y/n)? ")
+					fmt.Scan(&pilih)
+					if pilih == "y" || pilih ==  "Y" {
+						// lakukan edit data
+						fmt.Print("Masukkan  nama ")
+						clear_screen()
+						fmt.Println("Data berhasil di hapus.")
+					} 
+				}
+				if pilih == "n" || pilih == "N" || pilih == "y" || pilih ==  "Y"  {
+					break
+				}
+			}
+			
+		}
+		fmt.Print("Anda masih ingin hapus (y/n)? ")
+		fmt.Scan(&pilih)
+		if pilih == "y" || pilih ==  "Y" {
+			clear_screen()
+		} 
+		clear_screen()
+		if pilih == "n" || pilih == "N" {
+			break
+		}
+	}
+}
+
+/////////////////////////// Input Data ///////////////////////////
+func inputRider(T *tabRider, n *int, p string) {
+	var i, min, sec, milsec, banyak, nAwal int
+	var bin string
+
+	clear_screen()
+	if p == "1"{
+		// mengecek apakah data sudah penuh 
+		if *n == 24 {
+			fmt.Println("Data sudah penuh.")
+			fmt.Print("Tekan enter untuk kembali. ")
+			fmt.Scanln(&bin)
+		} else {
+			// Proses vadidasi banyaknya rider
+			nAwal = *n
+			for {
+				fmt.Print("Masukkan jumlah rider(1-", NMAX - *n, "): ")
+				fmt.Scan(&banyak)
+				if !(1 <= banyak && banyak <= NMAX - nAwal) {
+					clear_screen()
+					fmt.Println("Masukan tidak valid")
+				} else {
+					*n += banyak
+				}
+				if 1 <= banyak && banyak <= NMAX - nAwal {
+					break
+				}
+			}
+			// proses input data
+			for i = *n - banyak; i < *n; i++ {
+				fmt.Print("Input Data ridder ke-", i+1, "\n")
+				fmt.Print("Input nomor rider: ")
+				fmt.Scan(&T[i].no)
+				fmt.Print("Input nama rider: ")
+				inputFrasa(&T[i].name)
+				fmt.Print("Input asal negara rider: ")
+				fmt.Scan(&T[i].nat)
+				fmt.Print("Input tim rider: ")
+				inputFrasa(&T[i].team)
+				fmt.Println()
+			}
+		}
+	} else if p == "2" {
+		if cekKelengkapanRider(*T, *n){
+			urutNoRider(T, *n)
+			fmt.Println("Input waktu FP1 rider dengan format [menit detik milidetik]:")
+			for i = 0; i < *n; i++ {
+				fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].FP1 = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+	} else if p == "3" {
+		// mengecek apakah data sudah penuh 
+		if cekKelengkapanRider(*T , *n){
+			fmt.Println("Data sudah penuh.")
+			fmt.Print("Tekan enter untuk kembali. ")
+			fmt.Scanln(&bin)
+		}
+		if cekKelengkapanRider(*T , *n) {
+			urutNoRider(T, *n)
+			for i = 0; i < *n; i++ {
+				fmt.Println("Input waktu PR rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].PR = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+	} else if p == "4" {
+		if cekKelengkapanRider(*T , *n) {
+			for i = 0; i < *n; i++ {
+				fmt.Println("Input waktu FP2 rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].FP2 = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+	} else if p == "5" {
+		if cekKelengkapanRider(*T , *n) {
+			urutWaktuPR(T, *n)
+			for i = 12; i < *n; i++ {
+				fmt.Println("Input waktu Q1 rider",  T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].Q1 = (60000 * min) + (1000 * sec) + milsec
+			}
+		}	
+	} else if p == "6" {
+		if cekKelengkapanRider(*T , *n) {
+			urutWaktuPR(T, *n)
+			for i = 0; i < 10; i++ {
+				fmt.Println("Input waktu Q2 rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].Q2 = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+	} else if p == "7" {
+		if cekKelengkapanRider(*T , *n) {
+			urutNoRider(T, *n)
+			for i = 0; i < *n; i++ {
+				fmt.Println("Input waktu SPR rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].SPR = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+	} else if p == "8" {
+		if cekKelengkapanRider(*T , *n) {
+			urutNoRider(T, *n)
+			for i = 0; i < *n; i++ {
+				fmt.Println("Input waktu WUP rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].WUP = (60000 * min) + (1000 * sec) + milsec
+			}
+		}
+		
+	} else if p == "9" {
+		if cekKelengkapanRider(*T , *n) {
+			for i = 0; i < *n; i++ {
+				fmt.Println("Input waktu RAC rider", T[i].name, "dengan format [menit detik milidetik]:")
+				fmt.Scan(&min, &sec, &milsec)
+				T[i].RAC = (60000 * min) + (1000 * sec) + milsec 
+			}
+		}
+	}
+}
+
+/////////////////////////// Edit Data ///////////////////////////
+
+/////////////////////////// Fungsi ///////////////////////////
 func konversiWaktuTampilan(t, t0 , x int) string {
 /*mengembalikan string dengan format “(menit)’(detik).(miliDetik)s” 
 Jika posisi 1. Jika posisi > 1, maka mengembalikan string jarak dengan posisi pertama dengan. 
@@ -538,9 +711,11 @@ Jika waktu negatif, maka mengembalikan perolehan laps terakhir*/
 	var menit, detik, miliDetik int
 	var waktu string
 
-	if x == 0  {
-		menit = t / 1000 * 60
-		t %= 1000 * 60
+	if t == -1 {
+		waktu = "DNF"
+	} else if x == 0  {
+		menit = t / 60000
+		t %= 60000
 		detik = t / 1000
 		t %= 1000
 		miliDetik = t
@@ -781,6 +956,22 @@ F.S. T berisi nilai terurut berdasarkan waktu RAC*/
 	}
 }
 
+// func urutRaceGrid(T *tabRider, n int) {
+// 	/*I.S. terdefinisi array acak T1 sebanyak n
+// 	F.S. T berisi nilai terurut berdasarkan waktu Q2*/
+// 	var i int
+// 	var S tabRider
+
+// 	urutWaktuPR(T, n)
+// 	if n > 10 {
+// 		for i = 10; i < n; i++ {
+// 			S[i].Q1 = -1
+// 		}
+// 	}
+// 	urutWaktuQ1(T, n)
+
+// }
+
 func inputFrasa(str *string) {
 /*I.S str 
 F.S tercetak tabel dari field : name*/
@@ -952,6 +1143,7 @@ func hapusData(T *tabRider, n *int, x int) {
 	} 
 	hapusBagian(T, i)
 	*n--
+	hitungTotalPoin(T,*n)
 }
 
 func resetData(T *tabRider, n *int) {
