@@ -1,0 +1,111 @@
+1
+Jorge Martin
+SPA
+Red Bull GASGAS Tech3 
+2
+Pedro Acosta
+SPA
+Pramac Ducati 
+23
+Maverick Viñales
+SPA
+Aprilia Racing 
+24
+Enea Bastianini
+ITA
+Ducati Lenovo 
+25
+Francesco Bagnaia
+ITA
+Ducati Lenovo 
+27
+Alex Marquez
+SPA
+Gresini Ducati 
+32
+Aleix Espargaro
+SPA
+Aprilia Racing 
+34
+Brad Binder
+RSA
+Red Bull KTM 
+52
+Marc Marquez
+SPA
+Gresini Ducati 
+62
+Marco Bezzecchi
+ITA
+VR46 Ducati 
+72
+Jack Miller
+AUS
+Red Bull KTM 
+82
+Franco Morbidelli
+ITA
+Pramac Ducati 
+83
+Alex Rins
+SPA
+Monster Yamaha 
+84
+Raul Fernandez
+SPA
+Trackhouse Aprilia 
+85
+Miguel Oliveira
+POR
+Trackhouse Aprilia 
+86
+Johann Zarco
+FRA
+LCR Honda 
+87
+Augusto Fernandez
+SPA
+Red Bull GASGAS Tech3 
+88
+Fabio Di Giannantonio
+ITA
+VR46 Ducati 
+89
+Takaaki Nakagami
+JPN
+LCR Honda 
+90
+Fabio Quartararo
+FRA
+Monster Yamaha 
+92
+Joan Mir
+SPA
+Repsol Honda 
+94
+Luca Marini
+ITA
+Repsol Honda 
+
+2 33 411
+2 33 414
+2 31 245
+2 33 412
+3 31 241
+3 33 416
+3 14 248
+3 31 211
+3 53 415
+3 31 246
+2 43 713
+3 54 746
+3 31 214
+3 53 411
+2 41 741
+2 45 749
+2 43 718
+2 43 813
+2 42 711
+2 43 811
+2 36 816
+2 31 814
