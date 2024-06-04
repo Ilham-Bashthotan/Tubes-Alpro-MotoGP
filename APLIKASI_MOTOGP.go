@@ -207,15 +207,15 @@ func editDataRider() {
 		clear_screen()
 		menuEditDataRider(&pilih)
 		switch pilih {
-			case "1": 
-			case "2":
-			case "3":
-			case "4":
-			case "5":
-			case "6":
-			case "7":
-			case "8":
-			case "9":
+			case "1": subMenuEdit(&dataRider, nDataRider, "Rider")
+			case "2": subMenuEdit(&dataRider, nDataRider, "FP1")
+			case "3": subMenuEdit(&dataRider, nDataRider, "PR")
+			case "4": subMenuEdit(&dataRider, nDataRider, "FP2")
+			case "5": subMenuEdit(&dataRider, nDataRider, "Q1")
+			case "6": subMenuEdit(&dataRider, nDataRider, "Q2")
+			case "7": subMenuEdit(&dataRider, nDataRider, "SPR")
+			case "8": subMenuEdit(&dataRider, nDataRider, "WUP")
+			case "9": subMenuEdit(&dataRider, nDataRider, "RAC")
 			default: clear_screen()
 		}
 		if pilih == "10" {
@@ -938,17 +938,6 @@ func subMenuEdit(T *tabRider, n int, p string) {
 		}
 	}
 }
-
-// fmt.Println("1.  Rider")
-// fmt.Println("2.  Free Practice 1")
-// fmt.Println("3.  Practice")
-// fmt.Println("4.  Free Practice 2")
-// fmt.Println("5.  Qualification 1")
-// fmt.Println("6.  Qualification 2")
-// fmt.Println("7.  Sprint Race")
-// fmt.Println("8.  Warming Up")
-// fmt.Println("9.  Main Race")
-// fmt.Println("10. Kembali")
 
 /////////////////////////// Fungsi ///////////////////////////
 func konversiWaktuTampilan(t, t0 , x int) string {
