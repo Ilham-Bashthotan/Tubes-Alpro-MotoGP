@@ -25,8 +25,8 @@ var dataRider tabRider
 /////////////////////////// Main Menu ///////////////////////////
 func main() {
 	var pilih string
-	test(&dataRider, &nDataRider)
-	hitungTotalPoin(&dataRider, nDataRider)
+	// test(&dataRider, &nDataRider)
+	// hitungTotalPoin(&dataRider, nDataRider)
 	for {
 		clear_screen()
 		intro()
@@ -155,6 +155,10 @@ func inputDataRider() {
 
 	for {
 		clear_screen()
+		urutNoRider(&dataRider, nDataRider)
+		for i := 0; i < nDataRider; i++ {
+			fmt.Println(dataRider[i].no, dataRider[i].Q2)
+		}
 		menuInputDataRider(&pilih)
 		switch pilih {
 			case "1": subMenuInputRider(&dataRider, &nDataRider, "Rider")
@@ -315,21 +319,21 @@ func subMenuInputRider(T *tabRider, n *int, p string) {
 					T[i].PR = (60000 * min) + (1000 * sec) + milsec
 				}
 			}
-			// pengisian untuk yang tidak masuk ke Q1
+			// pengisian untuk rider yang tidak masuk ke Q1
 			urutWaktuPR(T, *n)
 			i = 0
 			for i < 10 && i < *n  {
 				T[i].Q1 = -1
 				i++
 			}
-			// pengisian untuk rider yang masuk dari PR ke Q1
-			i = 11
-			for i < *n  {
-				if T[i].Q1 <= 0 {
-					T[i].Q1 = 0
-					i++
+			// pengisian untuk rider yang tidak masuk ke Q2
+			for i = 10; i < *n; i++ {
+				if T[i].Q2 <= 0 {
+					T[i].Q2 = -1
 				}
+				
 			}
+			
 		}
 	} else if p == "FP2" {
 		if cekKelengkapanFP2(*T, *n) {
@@ -367,11 +371,13 @@ func subMenuInputRider(T *tabRider, n *int, p string) {
 					T[i].Q1 = (60000 * min) + (1000 * sec) + milsec
 				}
 			}
-			// pengisian untuk yang tidak masuk ke Q2
+			// pengisian untuk rider yang masuk ke Q2
 			urutWaktuQ1(T, *n)
 			i = 0
-			for 2 <= i && i <= 11 && i < *n  {
-				T[i].Q2 = -1
+			for i < 2 && i < *n  {
+				if T[i].Q2 < 0 {
+					T[i].Q2 = 0
+				}
 				i++
 			}
 		}
@@ -388,7 +394,7 @@ func subMenuInputRider(T *tabRider, n *int, p string) {
 		} else {
 			urutNoRider(T, *n)
 			fmt.Println("Input waktu Q2 rider dengan format [menit detik milidetik]:")
-			for i = 0; i < 10; i++ {
+			for i = 0; i < *n; i++ {
 				if T[i].Q2 == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
@@ -449,7 +455,7 @@ func subMenuInputRider(T *tabRider, n *int, p string) {
 }
 
 /////////////////////////// Sub Menu tampilkanDataRider()  ///////////////////////////
-func subMenuCetak()
+// func subMenuCetak()
 
 func subMenuCetakRider() {
 	var bin string
@@ -1292,7 +1298,7 @@ F.S tercetak tabel dari field : name, no, nat, team, totalPoin*/
 	urutWaktuQ1(&T, n)
 	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		if T[i].Q1 != 0 {
+		if T[i].Q1 > 0 {
 			fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q1, T[0].Q1, i))
 		}
 	}
@@ -1306,7 +1312,7 @@ F.S tercetak tabel dari field : name, no, nat, team, totalPoin*/
 	urutWaktuQ2(&T, n)
 	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		if T[i].Q2 != 0 {
+		if T[i].Q2 > 0 {
 			fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q2, T[0].Q2, i))
 		}
 	}
