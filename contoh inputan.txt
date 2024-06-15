@@ -1,89 +1,89 @@
 ---------------input data Rider------------------------------------
-0
+1
 Aleix Espargaro
 SPA
 Aprilia Racing
-1
+2
 Alex Marquez
 SPA
 Gresini Ducati
-2
+3
 Alex Rins
 SPA
 Monster Yamaha
-3
+4
 Augusto Fernandez
 SPA
 Red Bull GASGAS Tech3
-4
+5
 Brad Binder
 RSA
 Red Bull KTM
-5
+6
 Enea Bastianini
 ITA
 Ducati Lenovo
-6
+7
 Fabio Di Giannantonio
 ITA
 VR46 Ducati
-7
+8
 Fabio Quartararo
 FRA
 Monster Yamaha
-8
+9
 Francesco Bagnaia
 ITA
 Ducati Lenovo
-9
+10
 Franco Morbidelli
 ITA
 Pramac Ducati
-10
+11
 Jack Miller
 AUS
 Red Bull KTM
-11
+12
 Joan Mir
 SPA
 Repsol Honda
-12
+13
 Johann Zarco
 FRA
 LCR Honda
-13
+14
 Jorge Martin
 SPA
 Pramac Ducati
-14
+15
 Luca Marini
 ITA
 Repsol Honda
-15
+16
 Marc Marquez
 SPA
 Gresini Ducati
-16
+17
 Marco Bezzecchi
 ITA
 VR46 Ducati
-17
+18
 Maverick Viñales
 SPA
 Aprilia Racing
-18
+19
 Miguel Oliveira
 POR
 Trackhouse Aprilia
-19
+20
 Pedro Acosta
 SPA
 Red Bull GASGAS Tech3
-20
+21
 Raul Fernandez
 SPA
 Trackhouse Aprilia
-21
+22
 Takaaki Nakagami
 JPN
 LCR Honda
