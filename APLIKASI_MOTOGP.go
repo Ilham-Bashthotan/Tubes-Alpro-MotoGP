@@ -1443,8 +1443,8 @@ func cetakPoin(T tabRider, n int) {
 /////////////////////////// Hapus data ///////////////////////////
 func hapusData(T *tabRider, n *int, x int) {
 	/*
-		IS: 
-		FS: 
+		IS: Array T dan jumlah data n terdefinisi sembarang, index x terdefinisi
+		FS: Data array T yang ada pada index x terhapus dan data semua pada index setelahnya bergeser ke kiri
 	*/
 	var i int
 
@@ -1481,8 +1481,8 @@ func hapusData(T *tabRider, n *int, x int) {
 
 func resetData(T *tabRider, n *int) {
 	/*
-		IS: 
-		FS: 
+		IS: Array T dan jumlah data n terdefinisi sembarang
+		FS: Semua data pad array T terhapus dan nilai n menjadi 0
 	*/
 	var i int
 
@@ -1494,8 +1494,8 @@ func resetData(T *tabRider, n *int) {
 
 func hapusBagian(T *tabRider, idx int) {
 	/*
-		IS:  
-		FS: 
+		IS: Array T terdefinisi sembarang, index idx terdefinisi
+		FS: Semua data pad array T terhapus dan nilai n menjadi 0
 	*/
 	T[idx].no = 0
 	T[idx].FP1 = 0
@@ -1661,7 +1661,8 @@ func cekKelengkapanRAC(T tabRider, n int) bool {
 
 func member(T tabRider, n int, x int) bool {
 	/*
-		
+		Mengembalikan nilai true apabila ditemukan rider dengan nomor x
+dan false apabila tidak ditemukan rider dengan nomor x
 	*/
 	var i int
 	
@@ -1703,7 +1704,8 @@ func konversiWaktuTampilan(t, t0 , x int) string {
 
 func cariNoIdx(T tabRider, n, x int) int {
 	/*
-		
+		Mengembalikan alamat index dari rider dengan nomor x
+dan -1 apabila tidak ditemukan rider dengan nomor x
 	*/	
 	var i, ketemu int
 
