@@ -297,16 +297,19 @@ func subMenuInput(T *tabRider, n *int, p string) {
 			fmt.Println("Data Rider berhasil diinput. ")
 		}
 	} else if p == "FP1" {
-		if cekKelengkapanFP1(*T, *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanFP1(*T, *n) {
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu FP1 rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu FP1 rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].FP1 == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].FP1 = (60000 * min) + (1000 * sec) + milsec
+					T[i].FP1 = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			clear_screen()
@@ -314,16 +317,19 @@ func subMenuInput(T *tabRider, n *int, p string) {
 		}
 	} else if p == "PR" {
 		// mengecek apakah data sudah penuh 
-		if cekKelengkapanPR(*T , *n){
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanPR(*T , *n){
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu PR rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu PR rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].PR == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].PR = (60000 * min) + (1000 * sec) + milsec
+					T[i].PR = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			// pengisian untuk rider yang tidak masuk ke Q1
@@ -343,35 +349,41 @@ func subMenuInput(T *tabRider, n *int, p string) {
 			fmt.Println("Data PR berhasil diinput. ")
 		}
 	} else if p == "FP2" {
-		if cekKelengkapanFP2(*T, *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanFP2(*T, *n) {
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu FP2 rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu FP2 rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].FP2 == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].FP2 = (60000 * min) + (1000 * sec) + milsec
+					T[i].FP2 = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			clear_screen()
 			fmt.Println("Data FP2 berhasil diinput. ")
 		}
 	} else if p == "Q1" {
-		if cekKelengkapanQ1(*T, *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanQ1(*T, *n) {
 			fmt.Println("Data sudah penuh.")
 		} else if !cekKelengkapanPR(*T, *n) {
 			fmt.Println("Data PR masih belum lengkap.")
 			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu Q1 rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu Q1 rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].Q1 == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].Q1 = (60000 * min) + (1000 * sec) + milsec
+					T[i].Q1 = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			// pengisian untuk rider yang masuk ke Q2
@@ -387,51 +399,60 @@ func subMenuInput(T *tabRider, n *int, p string) {
 			fmt.Println("Data Q1 berhasil diinput. ")
 		}
 	} else if p == "Q2" {
-		if cekKelengkapanQ2(*T , *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanQ2(*T , *n) {
 			fmt.Println("Data sudah penuh.")
 		} else if !cekKelengkapanQ1(*T, *n) {
 			fmt.Println("Data Q1 masih belum lengkap.")
 			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu Q2 rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu Q2 rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].Q2 == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].Q2 = (60000 * min) + (1000 * sec) + milsec
+					T[i].Q2 = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			clear_screen()
 			fmt.Println("Data Q2 berhasil diinput. ")
 		}
 	} else if p == "SPR" {
-		if cekKelengkapanSPR(*T , *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanSPR(*T , *n) {
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu SPR rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu SPR rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].SPR == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].SPR = (60000 * min) + (1000 * sec) + milsec
+					T[i].SPR = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			clear_screen()
 			fmt.Println("Data SPR berhasil diinput. ")
 		}
 	} else if p == "WUP" {
-		if cekKelengkapanWUP(*T , *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanWUP(*T , *n) {
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu WUP rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu WUP rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].WUP == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].WUP = (60000 * min) + (1000 * sec) + milsec
+					T[i].WUP = konversiWaktuMs(min, sec, milsec)
 				}
 			}
 			clear_screen()
@@ -439,16 +460,19 @@ func subMenuInput(T *tabRider, n *int, p string) {
 		}
 		
 	} else if p == "RAC" {
-		if cekKelengkapanRAC(*T , *n) {
+		if nDataRider == 0 {
+			fmt.Println("Data rider masih kosong.")
+			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
+		} else if cekKelengkapanRAC(*T , *n) {
 			fmt.Println("Data sudah penuh.")
 		} else {
 			urutNoRider(T, *n)
-			fmt.Println("Input waktu RAC rider dengan format [menit detik milidetik]:")
+			fmt.Println("Input waktu RAC rider dengan format [menit detik milidetik]: ")
 			for i = 0; i < *n; i++ {
 				if T[i].RAC == 0 {
 					fmt.Print("#", T[i].no, " ",  T[i].name, ": ")
 					fmt.Scan(&min, &sec, &milsec)
-					T[i].RAC = (60000 * min) + (1000 * sec) + milsec 
+					T[i].RAC = konversiWaktuMs(min, sec, milsec) 
 				}
 			}
 			clear_screen()
@@ -663,7 +687,7 @@ func subMenuHapus(T *tabRider, n *int, p string) {
 						fmt.Print("Anda yakin ingin hapus data tersebut (y/n)? ")
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
-							hapusData(T, n, x)
+							hapusData(T, n, idx)
 							clear_screen()
 							fmt.Println("Data berhasil di hapus.")
 						} 
@@ -727,15 +751,16 @@ func subMenuEdit(T *tabRider, n int, p string) {
 			fmt.Println("Silakan isi terlebih dahulu di menu Input Data.")
 		} else {
 			for {
-				cetakRider(*T, n)
-				fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
-				fmt.Scan(&x)
-				idx = cariNoIdx(*T, n, x)
-				if idx == -1 {
-					clear_screen()
-					fmt.Println("Data tidak ditemukan.")
-				} else {
-					if p == "Rider" {
+				if p == "Rider" {
+					// cetak tabel
+					cetakRider(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
 						fmt.Print("Input nomor rider: ")
 						fmt.Scan(&no)
@@ -763,9 +788,19 @@ func subMenuEdit(T *tabRider, n int, p string) {
 							T[idx].team = team
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "FP1" {
+					}
+				} else if p == "FP1" {
+					// cetak tabel
+					cetakWaktuFP1(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
-						fmt.Print("Edit waktu FP1 rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu FP1 rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -773,27 +808,35 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].FP1 = (60000 * min) + (1000 * sec) + milsec
-							// pengisian untuk yang tidak masuk ke Q1
+							dataRider[idx].FP1 = konversiWaktuMs(min, sec, milsec)
+							// pengisian untuk rider yang tidak masuk ke Q1
 							urutWaktuPR(T, n)
 							i = 0
 							for i < 10 && i < n  {
 								T[i].Q1 = -1
 								i++
 							}
-							// pengisian untuk rider yang masuk dari PR ke Q1
-							i = 11
-							for i < n  {
-								if T[i].Q1 <= 0 {
-									T[i].Q1 = 0
-									i++
+							// pengisian untuk rider yang tidak masuk ke Q2
+							for i = 10; i < n; i++ {
+								if T[i].Q2 <= 0 {
+									T[i].Q2 = -1
 								}
 							}
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "PR" {
+					}
+				} else if p == "PR" {
+					// cetak tabel
+					cetakWaktuPR(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
-						fmt.Print("Edit waktu PR rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu PR rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -801,33 +844,8 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].PR = (60000 * min) + (1000 * sec) + milsec
+							dataRider[idx].PR = konversiWaktuMs(min, sec, milsec)
 							fmt.Println("Data berhasil diedit.")
-						} 
-					} else if p == "FP2" {
-						// lakukan edit data
-						fmt.Print("Edit waktu FP2 rider dengan format [menit detik milidetik]:")
-						fmt.Scan(&min, &sec, &milsec)
-						fmt.Println()
-						// tanyakan kembali
-						fmt.Print("Anda yakin ingin mengedit data tersebut (y/n)? ")
-						fmt.Scan(&pilih)
-						if pilih == "y" || pilih ==  "Y" {
-							clear_screen()
-							dataRider[idx].FP2 = (60000 * min) + (1000 * sec) + milsec
-							fmt.Println("Data berhasil diedit.")
-						} 
-					} else if p == "Q1" {
-						// lakukan edit data
-						fmt.Print("Edit waktu Q1 rider dengan format [menit detik milidetik]:")
-						fmt.Scan(&min, &sec, &milsec)
-						fmt.Println()
-						// tanyakan kembali
-						fmt.Print("Anda yakin ingin mengedit data tersebut (y/n)? ")
-						fmt.Scan(&pilih)
-						if pilih == "y" || pilih ==  "Y" {
-							clear_screen()
-							dataRider[idx].Q1 = (60000 * min) + (1000 * sec) + milsec
 							// pengisian untuk yang tidak masuk ke Q2
 							urutWaktuQ1(T, n)
 							i = 0
@@ -843,11 +861,20 @@ func subMenuEdit(T *tabRider, n int, p string) {
 									i++
 								}
 							}
-							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "Q2" {
+					}
+				} else if p == "FP2" {
+					// cetak tabel
+					cetakWaktuFP2(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
-						fmt.Print("Edit waktu Q2 rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu FP2 rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -855,12 +882,22 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].Q2 = (60000 * min) + (1000 * sec) + milsec
+							dataRider[idx].FP2 = konversiWaktuMs(min, sec, milsec)
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "SPR" {
+					}
+				} else if p == "Q1" {
+					// cetak tabel
+					cetakWaktuQ1(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 || T[idx].Q1 <= 0 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
-						fmt.Print("Edit waktu SPR rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu Q1 rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -868,12 +905,31 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].SPR = (60000 * min) + (1000 * sec) + milsec
+							dataRider[idx].Q1 = konversiWaktuMs(min, sec, milsec)
+							// pengisian untuk rider yang masuk ke Q2
+							urutWaktuQ1(T, n)
+							i = 0
+							for i < 2 && i < n  {
+								if T[i].Q2 < 0 {
+									T[i].Q2 = 0
+								}
+								i++
+							}
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "WUP" {
+					}
+				} else if p == "Q2" {
+					// cetak tabel
+					cetakWaktuQ2(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 || T[idx].Q1 <= 0 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {
 						// lakukan edit data
-						fmt.Print("Edit waktu WUP rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu Q2 rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -881,12 +937,22 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].WUP = (60000 * min) + (1000 * sec) + milsec
+							dataRider[idx].Q2 = konversiWaktuMs(min, sec, milsec)
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} else if p == "RAC" {
+					}
+				} else if p == "SPR" {
+					// cetak tabel
+					cetakWaktuSPR(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {						
 						// lakukan edit data
-						fmt.Print("Edit waktu RAC rider dengan format [menit detik milidetik]:")
+						fmt.Print("Edit waktu SPR rider dengan format [menit detik milidetik]: ")
 						fmt.Scan(&min, &sec, &milsec)
 						fmt.Println()
 						// tanyakan kembali
@@ -894,18 +960,64 @@ func subMenuEdit(T *tabRider, n int, p string) {
 						fmt.Scan(&pilih)
 						if pilih == "y" || pilih ==  "Y" {
 							clear_screen()
-							dataRider[idx].RAC = (60000 * min) + (1000 * sec) + milsec
+							dataRider[idx].SPR = konversiWaktuMs(min, sec, milsec)
 							fmt.Println("Data berhasil diedit.")
 						} 
-					} 
-				}
+					}
+				} else if p == "WUP" {
+					// cetak tabel
+					cetakWaktuWUP(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {						
+						// lakukan edit data
+						fmt.Print("Edit waktu WUP rider dengan format [menit detik milidetik]: ")
+						fmt.Scan(&min, &sec, &milsec)
+						fmt.Println()
+						// tanyakan kembali
+						fmt.Print("Anda yakin ingin mengedit data tersebut (y/n)? ")
+						fmt.Scan(&pilih)
+						if pilih == "y" || pilih ==  "Y" {
+							clear_screen()
+							dataRider[idx].WUP = konversiWaktuMs(min, sec, milsec)
+							fmt.Println("Data berhasil diedit.")
+						} 
+					}
+				} else if p == "RAC" {
+					// cetak tabel
+					cetakWaktuRAC(*T, n)
+					fmt.Print("Pilih rider yang ingin diedit dari NO rider: ")
+					fmt.Scan(&x)
+					idx = cariNoIdx(*T, n, x)
+					if idx == -1 {
+						clear_screen()
+						fmt.Println("Data tidak ditemukan.")
+					} else {						
+						// lakukan edit data
+						fmt.Print("Edit waktu RAC rider dengan format [menit detik milidetik]: ")
+						fmt.Scan(&min, &sec, &milsec)
+						fmt.Println()
+						// tanyakan kembali
+						fmt.Print("Anda yakin ingin mengedit data tersebut (y/n)? ")
+						fmt.Scan(&pilih)
+						if pilih == "y" || pilih ==  "Y" {
+							clear_screen()
+							dataRider[idx].RAC = konversiWaktuMs(min, sec, milsec)
+							fmt.Println("Data berhasil diedit.")
+						} 
+					}
+				} 
 				if pilih == "n" || pilih == "N" || pilih == "y" || pilih ==  "Y"  {
 					break
 				}
 			}
 			
 		}
-		fmt.Print("Anda masih ingin hapus (y/n)? ")
+		fmt.Print("Anda masih ingin edit (y/n)? ")
 		fmt.Scan(&pilih)
 		if pilih == "y" || pilih ==  "Y" {
 			clear_screen()
@@ -917,6 +1029,7 @@ func subMenuEdit(T *tabRider, n int, p string) {
 	}
 }
 
+/////////////////////////// Hitung Poin ///////////////////////////
 func hitungTotalPoin(T *tabRider, n int) {
 	/*
 		IS: 
@@ -1183,66 +1296,66 @@ func cetakRaceGrid(T tabRider, n int) {
 	var i int
 
 	urutRaceGrid(&T, n)
-	fmt.Printf("%-25v %-2v %3v %25v\n", "NAME", "NO", "NAT", "TEAM")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v\n", "POS", "NAME", "NO", "NAT", "TEAM")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25s %-2v %3s %25s\n", T[i].name, T[i].no, T[i].nat, T[i].team)
+		fmt.Printf("%-3v %-25s %-2v %-3v %-25v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team)
 	}
 }
 
 func cetakWaktuFP1(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, FP1
 	*/
 	var i int
 
 	urutWaktuFP1(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].FP1, T[0].FP1, i))
+		fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].FP1, T[0].FP1, i))
 	}
 }
 
 func cetakWaktuPR(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, PR
 	*/
 	var i int
 
 	urutWaktuPR(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].PR, T[0].PR, i))
+		fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].PR, T[0].PR, i))
 	}
 }
 
 func cetakWaktuFP2(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, FP2
 	*/
 	var i int
 
 	urutWaktuFP2(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].FP2, T[0].FP2, i))
+		fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].FP2, T[0].FP2, i))
 	}
 }
 
 func cetakWaktuQ1(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, Q1
 	*/
 	var i int
 
 	urutWaktuQ1(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
 		if T[i].Q1 > 0 {
-			fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q1, T[0].Q1, i))
+			fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n",  i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q1, T[0].Q1, i))
 		}
 	}
 }
@@ -1250,15 +1363,15 @@ func cetakWaktuQ1(T tabRider, n int) {
 func cetakWaktuQ2(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, Q2
 	*/
 	var i int
 
 	urutWaktuQ2(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
 		if T[i].Q2 > 0 {
-			fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q2, T[0].Q2, i))
+			fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].Q2, T[0].Q2, i))
 		}
 	}
 }
@@ -1266,42 +1379,50 @@ func cetakWaktuQ2(T tabRider, n int) {
 func cetakWaktuSPR(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, SPR
 	*/
 	var i int
 
 	urutWaktuSPR(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].SPR, T[0].SPR, i))
+		if T[i].SPR > 0 {
+			fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].SPR, T[0].SPR, i))
+		} else {
+			fmt.Printf("    %-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].SPR, T[0].SPR, i))
+		}
 	}
 }
 
 func cetakWaktuWUP(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, WUP
 	*/
 	var i int
 
 	urutWaktuWUP(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].WUP, T[0].WUP, i))
+		fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].WUP, T[0].WUP, i))
 	}
 }
 
 func cetakWaktuRAC(T tabRider, n int) {
 	/*
 		IS: T array dan banyak elemen n terdefinisi
-		FS: tercetak tabel dari field : name, no, nat, team, totalPoin
+		FS: tercetak tabel dari field : name, no, nat, team, RAC
 	*/
 	var i int
 
 	urutWaktuRAC(&T, n)
-	fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
+	fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", "POS", "NAME", "NO", "NAT", "TEAM", "TIME/DIFF")
 	for i = 0; i < n; i++ {
-		fmt.Printf("%-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].RAC, T[0].RAC, i))
+		if T[i].RAC > 0 {
+			fmt.Printf("%-3v %-25v %-2v %-3v %-25v %-11v\n", i + 1, T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].RAC, T[0].RAC, i))
+		} else {
+			fmt.Printf("    %-25v %-2v %-3v %-25v %-11v\n", T[i].name, T[i].no, T[i].nat, T[i].team, konversiWaktuTampilan(T[i].RAC, T[0].RAC, i))
+		}
 	}
 }
 
@@ -1396,8 +1517,9 @@ func hapusBagian(T *tabRider, idx int) {
 /////////////////////////// function ///////////////////////////
 func cekKelengkapanRider(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua nomor rider pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat nomor yang bernilai 0
 	*/
 	var i int
 	
@@ -1411,8 +1533,9 @@ func cekKelengkapanRider(T tabRider, n int) bool {
 
 func cekKelengkapanFP1(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua waktu FP1 pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu FP1 yang bernilai 0
 	*/
 	var i int
 	
@@ -1426,8 +1549,9 @@ func cekKelengkapanFP1(T tabRider, n int) bool {
 
 func cekKelengkapanPR(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua waktu PR pada arrray 
+		bentukan T sebanyan n data sudah terisi dan nilai false apablia 
+		terdapat waktu PR yang bernilai 0
 	*/
 	var i int
 	
@@ -1441,8 +1565,9 @@ func cekKelengkapanPR(T tabRider, n int) bool {
 
 func cekKelengkapanFP2(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua waktu FP2 pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu FP2 yang bernilai 0
 	*/
 	var i int
 	
@@ -1456,8 +1581,9 @@ func cekKelengkapanFP2(T tabRider, n int) bool {
 
 func cekKelengkapanQ1(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua waktu Q1 pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu Q1 yang bernilai 0
 	*/
 	var i int
 	
@@ -1471,8 +1597,9 @@ func cekKelengkapanQ1(T tabRider, n int) bool {
 
 func cekKelengkapanQ2(T tabRider, n int) bool {
 	/*
-		IS:  
-		FS: 
+		Mengembalikan nilai true apabila semua waktu Q2 pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu Q2 yang bernilai 0
 	*/
 	var i int
 	
@@ -1486,8 +1613,9 @@ func cekKelengkapanQ2(T tabRider, n int) bool {
 
 func cekKelengkapanSPR(T tabRider, n int) bool {
 	/*
-		IS: 
-		FS: 
+		Mengembalikan nilai true apabila semua waktu SPR pada array 
+		bentuka T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu SPR yang bernilai 0
 	*/
 	var i int
 	
@@ -1501,8 +1629,9 @@ func cekKelengkapanSPR(T tabRider, n int) bool {
 
 func cekKelengkapanWUP(T tabRider, n int) bool {
 	/*
-		IS: 
-		FS: 
+		Mengembalikan nilai true jika semua waktu WUP pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu WUP yang bernilai 0 
 	*/
 	var i int
 	
@@ -1516,8 +1645,9 @@ func cekKelengkapanWUP(T tabRider, n int) bool {
 
 func cekKelengkapanRAC(T tabRider, n int) bool {
 	/*
-		IS: 
-		FS: 
+		Mengembalikan nilai true jika semua waktu RAC pada array 
+		bentukan T sebanyak n data sudah terisi dan nilai false apabila 
+		terdapat waktu RAC yang bernilai 0
 	*/
 	var i int
 	
@@ -1531,8 +1661,7 @@ func cekKelengkapanRAC(T tabRider, n int) bool {
 
 func member(T tabRider, n int, x int) bool {
 	/*
-		IS: 
-		FS: 
+		
 	*/
 	var i int
 	
@@ -1574,8 +1703,7 @@ func konversiWaktuTampilan(t, t0 , x int) string {
 
 func cariNoIdx(T tabRider, n, x int) int {
 	/*
-		IS: 
-		FS: 
+		
 	*/	
 	var i, ketemu int
 
@@ -1588,6 +1716,18 @@ func cariNoIdx(T tabRider, n, x int) int {
 		i++ 
 	}
 	return ketemu
+}
+
+func konversiWaktuMs(m, s, ms int) int {
+	/*
+		mengembalikan nilai konversi waktu ke milidetik jika 
+		m (menit), s (detik), ms (milidetik) valid, selain dari itu 
+		maka mengembalikan nilai -1
+	*/
+	if m >= 0 && 0 <= s && s <= 59 && 0 <= ms && ms<= 999 {
+		return m * 60000 + s * 1000 + ms
+	}
+	return -1
 }
 
 /////////////////////////// Hiasan ///////////////////////////
