@@ -246,8 +246,8 @@ func hapusDataRider() {
 /////////////////////////// Sub Menu ///////////////////////////
 func subMenuInput(T *tabRider, n *int, p string) {
 	/*
-		IS: 
-		FS: 
+		IS: Terdefinisi T array sebanyak n, terdefinisi p pilihan yang merujuk pada field pada T array
+		FS: array T terisi sesuai p pilihan pada field array T, n tersi banyaknya T rider yang sesuai pada p pilihan
 	*/
 	var i, min, sec, milsec, banyak, nAwal, no int
 	var bin string
@@ -485,8 +485,8 @@ func subMenuInput(T *tabRider, n *int, p string) {
 
 func subMenuCetak(T tabRider, n int, p string) {
 	/*
-		IS: 
-		FS: 
+		IS: Terdefinisi T array sebanyak n, terdefinisi p pilihan yang merujuk pada field pada T array atau pilihan di menu cetak
+		FS: cetak data yang tertapat pada array T yang sesuai pada p pilihan
 	*/
 	var bin string
 
@@ -662,8 +662,8 @@ func subMenuCetak(T tabRider, n int, p string) {
 
 func subMenuHapus(T *tabRider, n *int, p string) {
 	/*
-		IS: 
-		FS: 
+		IS: Terdefinisi T array sebanyak n, terdefinisi p pilihan yang merujuk pada field pada T array
+		FS: hapus data yang tertapat pada array T yang sesuai pada p pilihan
 	*/	
 	var bin, pilih string
 	var x, idx int
@@ -735,8 +735,8 @@ func subMenuHapus(T *tabRider, n *int, p string) {
 
 func subMenuEdit(T *tabRider, n int, p string) {
 	/*
-		IS: 
-		FS: 
+		IS: Terdefinisi T array sebanyak n, terdefinisi p pilihan yang merujuk pada field pada T array
+		FS: hapus data yang tertapat pada array T yang sesuai pada p pilihan
 	*/
 	var pilih string
 	var x, idx, i int
@@ -1032,8 +1032,8 @@ func subMenuEdit(T *tabRider, n int, p string) {
 /////////////////////////// Hitung Poin ///////////////////////////
 func hitungTotalPoin(T *tabRider, n int) {
 	/*
-		IS: 
-		FS: 
+		IS: terdefinisi T array sebanyak n
+		FS: total poin terisi pada array T
 	*/
 	var i int
 
@@ -1077,7 +1077,7 @@ func hitungTotalPoin(T *tabRider, n int) {
 /////////////////////////// Urut Data ///////////////////////////
 func urutNoRider(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu no
 	*/
 	var pass, i int
@@ -1096,7 +1096,7 @@ func urutNoRider(T *tabRider, n int) {
 
 func urutWaktuFP1(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu FP1
 	*/
 	var pass, i int
@@ -1115,7 +1115,7 @@ func urutWaktuFP1(T *tabRider, n int) {
 
 func urutWaktuPR(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu PR
 	*/
 	var pass, i int
@@ -1134,7 +1134,7 @@ func urutWaktuPR(T *tabRider, n int) {
 
 func urutWaktuFP2(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu FP2
 	*/
 	var pass, i int
@@ -1153,7 +1153,7 @@ func urutWaktuFP2(T *tabRider, n int) {
 
 func urutWaktuQ1(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu Q1
 	*/
 	var pass, i int
@@ -1172,7 +1172,7 @@ func urutWaktuQ1(T *tabRider, n int) {
 
 func urutWaktuQ2(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu Q2
 	*/
 	var pass, i int
@@ -1191,7 +1191,7 @@ func urutWaktuQ2(T *tabRider, n int) {
 
 func urutWaktuSPR(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu SPR
 	*/
 	var pass, i int
@@ -1210,7 +1210,7 @@ func urutWaktuSPR(T *tabRider, n int) {
 
 func urutWaktuWUP(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu WUP
 	*/
 	var pass, i int
@@ -1229,7 +1229,7 @@ func urutWaktuWUP(T *tabRider, n int) {
 
 func urutTotalPoin(T *tabRider, n int) {
 /*
-	IS: terdefinisi array acak T1 sebanyak n
+	IS: terdefinisi array T sebanyak n
 	FS: T berisi nilai terurut berdasarkan waktu totalPoin*/
 	var pass, i int
 	var temp rider
@@ -1247,7 +1247,7 @@ func urutTotalPoin(T *tabRider, n int) {
 
 func urutWaktuRAC(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu RAC
 	*/
 	var pass, i int
@@ -1266,7 +1266,7 @@ func urutWaktuRAC(T *tabRider, n int) {
 
 func urutRaceGrid(T *tabRider, n int) {
 	/*
-		IS: terdefinisi array acak T1 sebanyak n
+		IS: terdefinisi array T sebanyak n
 		FS: T berisi nilai terurut berdasarkan waktu Q2
 	*/
 	urutWaktuQ1(T, n)
@@ -1662,7 +1662,7 @@ func cekKelengkapanRAC(T tabRider, n int) bool {
 func member(T tabRider, n int, x int) bool {
 	/*
 		Mengembalikan nilai true apabila ditemukan rider dengan nomor x
-dan false apabila tidak ditemukan rider dengan nomor x
+		dan false apabila tidak ditemukan rider dengan nomor x
 	*/
 	var i int
 	
@@ -1705,7 +1705,7 @@ func konversiWaktuTampilan(t, t0 , x int) string {
 func cariNoIdx(T tabRider, n, x int) int {
 	/*
 		Mengembalikan alamat index dari rider dengan nomor x
-dan -1 apabila tidak ditemukan rider dengan nomor x
+		dan -1 apabila tidak ditemukan rider dengan nomor x
 	*/	
 	var i, ketemu int
 
@@ -1735,8 +1735,8 @@ func konversiWaktuMs(m, s, ms int) int {
 /////////////////////////// Hiasan ///////////////////////////
 func inputFrasa(str *string) {
 	/*
-		IS: 
-		FS: 
+		IS: terdefinisi sembarang str (string)
+		FS: str terisi frasa dan berhanti ketika masukan berupa enter
 	*/
 	var ch, i byte
 		
